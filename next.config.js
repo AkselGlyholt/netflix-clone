@@ -1,12 +1,10 @@
-/** @type {import('next').NextConfig} */
-module.exports = {
+const withTM = require('next-transpile-modules')([
+  '@stripe/firestore-stripe-payments',
+]) // pass the modules you would like to see transpiled
+
+module.exports = withTM({
   reactStrictMode: true,
   images: {
-    domains: ["image.tmdb.org", "assets.nflxext.com", "rb.gy"],
+    domains: ['rb.gy', 'image.tmdb.org', "assets.nflxext.com"],
   },
-  plugins: [
-    require("tailwindcss-textshadow"),
-    require("tailwind-scrollbar-hide"),
-    require("tailwind-scrollbar"),
-  ],
-};
+})
